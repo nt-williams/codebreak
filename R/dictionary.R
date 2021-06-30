@@ -9,7 +9,8 @@
 #' @examples
 #' ex <- data.frame(
 #'   x = c(1, 2, 5, 3, 4),
-#'   y = c(0, 1, 1, 0, 1)
+#'   y = c(0, 1, 1, 0, 1),
+#'   z = rnorm(5)
 #' )
 #' dictionary(ex, system.file("dictionary.json", package = "dictionary"))
 dictionary <- function(.data, path = "dictionary.json") {
