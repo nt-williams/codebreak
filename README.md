@@ -1,17 +1,31 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# dictionary
+# codebook
 
 <!-- badges: start -->
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![R-CMD-check](https://github.com/nt-williams/dictionary/workflows/R-CMD-check/badge.svg)](https://github.com/nt-williams/dictionary/actions)
 <!-- badges: end -->
 
-Quickly label your data using data dictionaries saved as JSON files.
+Quickly and easily label your data using code books saved as JSON files.
 
-## Usage
+## Installation
+
+``` r
+remotes::install_github("nt-williams/codebook")
+```
+
+or
+
+``` r
+# Install 'codebook' from 'nt-williams' universe
+install.packages('codebook', repos = 'https://nt-williams.r-universe.dev')
+```
+
+## A basic example
 
 ``` r
 some_data <- data.frame(
@@ -21,8 +35,8 @@ some_data <- data.frame(
 )
 ```
 
-Your data dictionary as a JSON file, saved in your project directory (or
-somewhere else) as `dictionary.json`.
+Your codebook as a JSON file, saved in your project directory (or
+somewhere else) as `codebook.json`.
 
 ``` json
 {
@@ -40,10 +54,10 @@ somewhere else) as `dictionary.json`.
 }
 ```
 
-Apply the dictionary to the coded data:
+Apply the code book to the data:
 
 ``` r
-dictionary(some_data)
+codebook(some_data)
 #>        x   y   z
 #> 1  These  No 5.2
 #> 2    Are Yes 3.1
