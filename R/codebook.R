@@ -1,9 +1,9 @@
-#' Label data based on a data dictionary
+#' Label data based on a code book.
 #'
 #' @param .data The data to label.
-#' @param path The path to JSON data dictionary.
+#' @param path The path to JSON code book.
 #'
-#' @return The data with the columns found in the data dictionary labeled.
+#' @return The data with the columns found in the code book labeled.
 #' @export
 #'
 #' @examples
@@ -12,9 +12,9 @@
 #'   y = c(0, 1, 1, 0, 1),
 #'   z = rnorm(5)
 #' )
-#' dictionary(ex, system.file("dictionary.json", package = "dictionary"))
-dictionary <- function(.data, path = "dictionary.json") {
-  if (!file.exists(path)) stop("Dictionary not found. Check your file path!")
+#' codebook(ex, system.file("codebook.json", package = "codebook"))
+codebook <- function(.data, path = "dictionary.json") {
+  if (!file.exists(path)) stop("Codebook not found. Check your file path!")
 
   dict <- jsonlite::fromJSON(path)
   out <- .data
