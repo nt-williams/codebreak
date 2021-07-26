@@ -16,7 +16,7 @@
 codebook <- function(.data, path = "dictionary.yml") {
   if (!file.exists(path)) stop("Codebook not found. Check your file path!")
 
-  dict <- yaml::read_yaml(path)
+  dict <- get_dictionary(path)
   out <- .data
   modify <- names(dict)
   modify <- modify[modify %in% names(.data)]
@@ -29,4 +29,9 @@ codebook <- function(.data, path = "dictionary.yml") {
     )
   })
   out
+}
+
+get_dictionary <- function(path) {
+  cb <- yaml::read_yaml(path)
+  purrr::discard(lapply(cb, function(x) x$cb), is.null)
 }
