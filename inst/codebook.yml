@@ -9,9 +9,13 @@ x:
 
 "y":
   label: Variable Y
-  cb:
+  cb: &binary
     0: "No"
     1: "Yes"
 
 z:
   label: Variable Z
+
+w:
+  label: Variable W
+  cb: *binary
