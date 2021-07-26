@@ -4,12 +4,12 @@
 \alias{codebook}
 \title{Label data based on a code book.}
 \usage{
-codebook(.data, path = "dictionary.json")
+codebook(.data, path = "dictionary.yml")
 }
 \arguments{
 \item{.data}{The data to label.}
 
-\item{path}{The path to JSON code book.}
+\item{path}{The path to YAML code book.}
 }
 \value{
 The data with the columns found in the code book labeled.
@@ -23,5 +23,5 @@ ex <- data.frame(
   y = c(0, 1, 1, 0, 1),
   z = rnorm(5)
 )
-codebook(ex, system.file("codebook.json", package = "codebook"))
+codebook(ex, system.file("codebook.yml", package = "codebook"))
 }

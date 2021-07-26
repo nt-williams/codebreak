@@ -1,7 +1,7 @@
 #' Label data based on a code book.
 #'
 #' @param .data The data to label.
-#' @param path The path to JSON code book.
+#' @param path The path to YAML code book.
 #'
 #' @return The data with the columns found in the code book labeled.
 #' @export
@@ -12,11 +12,11 @@
 #'   y = c(0, 1, 1, 0, 1),
 #'   z = rnorm(5)
 #' )
-#' codebook(ex, system.file("codebook.json", package = "codebook"))
-codebook <- function(.data, path = "dictionary.json") {
+#' codebook(ex, system.file("codebook.yml", package = "codebook"))
+codebook <- function(.data, path = "dictionary.yml") {
   if (!file.exists(path)) stop("Codebook not found. Check your file path!")
 
-  dict <- jsonlite::fromJSON(path)
+  dict <- yaml::read_yaml(path)
   out <- .data
   modify <- names(dict)
   modify <- modify[modify %in% names(.data)]
