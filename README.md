@@ -35,23 +35,20 @@ some_data <- data.frame(
 )
 ```
 
-Your codebook as a JSON file, saved in your project directory (or
-somewhere else) as `codebook.json`.
+Your codebook as YAML, saved in your project directory (or somewhere
+else) as `codebook.yml`.
 
-``` json
-{
-  "x": {
-      "1": "These",
-      "2": "Are",
-      "3": "Random",
-      "4": "Factor",
-      "5": "Labels"
-  },
-  "y": {
-    "0": "No",
-    "1": "Yes"
-  }
-}
+``` yaml
+x:
+  1: These
+  2: Are
+  3: Random
+  4: Factor
+  5: Labels
+
+"y":
+  0: "No"
+  1: "Yes"
 ```
 
 Apply the code book to the data:

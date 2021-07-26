@@ -1,6 +1,6 @@
 Package: codebook
 Type: Package
-Title: Label Data Using a JSON Code Book
+Title: Label Data Using a YAML Codebook
 Version: 0.1.0
 Authors@R: 
     person(given = "Nick",
@@ -9,10 +9,10 @@ Authors@R:
            email = "ntwilliams.personal@gmail.com", 
            comment = c(ORCID = "0000-0002-1378-4831"))
 Description: A light-weight framework for labeling coded data using a 
-  code book saved as a JSON file.
+  code book saved as YAML.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: 
-    jsonlite
+    yaml
 RoxygenNote: 7.1.1
