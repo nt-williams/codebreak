@@ -40,15 +40,22 @@ else) as `codebook.yml`.
 
 ``` yaml
 x:
-  1: These
-  2: Are
-  3: Random
-  4: Factor
-  5: Labels
+  label: Variable X
+  cb:
+    1: These
+    2: Are
+    3: Random
+    4: Factor
+    5: Labels
 
 "y":
-  0: "No"
-  1: "Yes"
+  label: Variable Y
+  cb:
+    0: "No"
+    1: "Yes"
+
+z:
+  label: Variable Z
 ```
 
 Apply the code book to the data:
@@ -61,4 +68,16 @@ codebook(some_data)
 #> 3 Labels Yes 5.6
 #> 4 Random  No 8.9
 #> 5 Factor Yes 9.0
+```
+
+Rename columns based on the codebook labels:
+
+``` r
+label(some_data)
+#>   Variable X Variable Y Variable Z
+#> 1          1          0        5.2
+#> 2          2          1        3.1
+#> 3          5          1        5.6
+#> 4          3          0        8.9
+#> 5          4          1        9.0
 ```

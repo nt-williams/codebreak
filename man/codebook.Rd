@@ -21,7 +21,8 @@ Label data based on a code book.
 ex <- data.frame(
   x = c(1, 2, 5, 3, 4),
   y = c(0, 1, 1, 0, 1),
-  z = rnorm(5)
+  z = rnorm(5),
+  w = c(1, 1, 0, 1, 1)
 )
 codebook(ex, system.file("codebook.yml", package = "codebook"))
 }
