@@ -4,12 +4,26 @@
 \alias{codebook}
 \title{Label data based on a code book.}
 \usage{
-codebook(.data, path = "dictionary.yml")
+codebook(
+  .data,
+  path = "dictionary.yml",
+  .label = FALSE,
+  .include = NULL,
+  .exclude = NULL
+)
 }
 \arguments{
 \item{.data}{The data to label.}
 
 \item{path}{The path to YAML code book.}
+
+\item{.label}{Should column names also be renamed according to code book labels?}
+
+\item{.include}{An optional character vector of column names to
+apply the code book to.}
+
+\item{.exclude}{An optional character vector of column names to not apply
+the code book to. Ignored if \code{.include} is specified.}
 }
 \value{
 The data with the columns found in the code book labeled.
