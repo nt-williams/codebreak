@@ -19,7 +19,7 @@ codebook <- function(.data, path = "dictionary.yml", .label = FALSE,
   check_path(path)
   dict <- get_dictionary(path)
   result <- .data
-  modify <- to_modify(.data, dict)
+  modify <- to_modify(.data, dict, .include, .exclude)
   lapply(modify, function(x) {
     result[[x]] <<- sapply(
       as.character(result[[x]]), function(key) {
@@ -29,10 +29,8 @@ codebook <- function(.data, path = "dictionary.yml", .label = FALSE,
     )
   })
 
-  if (isFALSE(.label)) {
-    return(result)
-  }
-  label(result, path)
+  if (isFALSE(.label)) return(result)
+  label(result, path, .include, .exclude)
 }
 
 get_dictionary <- function(path) {

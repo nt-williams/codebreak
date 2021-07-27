@@ -16,12 +16,12 @@
 #'   w = c(1, 1, 0, 1, 1)
 #' )
 #' label(ex, system.file("codebook.yml", package = "codebook"))
-label <- function(.data, path = "dictionary.yml") {
+label <- function(.data, path = "dictionary.yml", .include = NULL, .exclude = NULL) {
   check_path(path)
   labels <- get_labels(path)
   old_names <- names(.data)
   new_names <- old_names
-  modify <- to_modify(.data, labels)
+  modify <- to_modify(.data, labels, .include, .exclude)
   for (i in modify) {
     new_names[which(old_names == i)] <- labels[[i]]
   }
