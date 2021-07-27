@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 [![R-CMD-check](https://github.com/nt-williams/dictionary/workflows/R-CMD-check/badge.svg)](https://github.com/nt-williams/dictionary/actions)
 <!-- badges: end -->
 
-Quickly and easily label your data using code books saved as JSON files. 
+Quickly and easily label your data using code books saved as YAML. 
 
 ## Installation
 
@@ -95,4 +95,3 @@ label(some_data)
 #> 4          3          0        8.9          1
 #> 5          4          1        9.0          1
 ```
-

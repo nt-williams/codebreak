@@ -10,7 +10,7 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 [![R-CMD-check](https://github.com/nt-williams/dictionary/workflows/R-CMD-check/badge.svg)](https://github.com/nt-williams/dictionary/actions)
 <!-- badges: end -->
 
-Quickly and easily label your data using code books saved as JSON files.
+Quickly and easily label your data using code books saved as YAML.
 
 ## Installation
 
