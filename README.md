@@ -8,6 +8,7 @@
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![R-CMD-check](https://github.com/nt-williams/dictionary/workflows/R-CMD-check/badge.svg)](https://github.com/nt-williams/dictionary/actions)
+[![codecov](https://codecov.io/gh/nt-williams/codebook/branch/main/graph/badge.svg?token=QGGA7OE5UY)](https://codecov.io/gh/nt-williams/codebook)
 <!-- badges: end -->
 
 Quickly and easily label your data using code books saved as YAML.
