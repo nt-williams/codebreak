@@ -2,4 +2,5 @@
 
 export(codebook)
 export(label)
+importFrom(stats,na.omit)
 importFrom(stats,setNames)

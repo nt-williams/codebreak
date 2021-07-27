@@ -9,9 +9,11 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![R-CMD-check](https://github.com/nt-williams/dictionary/workflows/R-CMD-check/badge.svg)](https://github.com/nt-williams/dictionary/actions)
 [![codecov](https://codecov.io/gh/nt-williams/codebook/branch/main/graph/badge.svg?token=QGGA7OE5UY)](https://codecov.io/gh/nt-williams/codebook)
+
 <!-- badges: end -->
 
-Quickly and easily label your data using code books saved as YAML.
+Quickly and easily label your data using code books saved as a
+[YAML](https://yaml.org/) text file.
 
 ## Installation
 
@@ -26,7 +28,7 @@ or
 install.packages('codebook', repos = 'https://nt-williams.r-universe.dev')
 ```
 
-## A basic example
+## Applying a code book
 
 ``` r
 some_data <- data.frame(
@@ -37,8 +39,8 @@ some_data <- data.frame(
 )
 ```
 
-Your codebook as YAML, saved in your project directory (or somewhere
-else) as `codebook.yml`.
+Code books are created as YAML text files and are saved in the project
+directory (or somewhere else) as `codebook.yml` (or as something else).
 
 ``` yaml
 x:
@@ -76,7 +78,7 @@ codebook(some_data)
 #> 5 Factor Yes 9.0 Yes
 ```
 
-Rename columns based on the codebook labels:
+Rename columns based on the code book labels:
 
 ``` r
 label(some_data)
@@ -86,4 +88,16 @@ label(some_data)
 #> 3          5          1        5.6          0
 #> 4          3          0        8.9          1
 #> 5          4          1        9.0          1
+```
+
+Apply the code book and rename columns:
+
+``` r
+codebook(some_data, .label = TRUE)
+#>   Variable X Variable Y Variable Z Variable W
+#> 1      These         No        5.2        Yes
+#> 2        Are        Yes        3.1        Yes
+#> 3     Labels        Yes        5.6         No
+#> 4     Random         No        8.9        Yes
+#> 5     Factor        Yes        9.0        Yes
 ```

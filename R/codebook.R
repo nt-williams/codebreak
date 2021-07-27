@@ -25,6 +25,9 @@ codebook <- function(.data, path = "dictionary.yml", .label = FALSE,
   dict <- get_dictionary(path)
   result <- .data
   modify <- to_modify(.data, dict, .include, .exclude)
+
+  assert_no_unknown_levels(.data, dict, modify)
+
   lapply(modify, function(x) {
     result[[x]] <<- sapply(
       as.character(result[[x]]), function(key) {
