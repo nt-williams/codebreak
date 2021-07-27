@@ -14,7 +14,8 @@
 #'   w = c(1, 1, 0, 1, 1)
 #' )
 #' codebook(ex, system.file("codebook.yml", package = "codebook"))
-codebook <- function(.data, path = "dictionary.yml") {
+codebook <- function(.data, path = "dictionary.yml", .label = FALSE,
+                     .include = NULL, .exclude = NULL) {
   check_path(path)
   dict <- get_dictionary(path)
   result <- .data
@@ -27,7 +28,11 @@ codebook <- function(.data, path = "dictionary.yml") {
       }, USE.NAMES = FALSE
     )
   })
-  result
+
+  if (isFALSE(.label)) {
+    return(result)
+  }
+  label(result, path)
 }
 
 get_dictionary <- function(path) {
