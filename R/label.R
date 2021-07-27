@@ -1,6 +1,6 @@
 #' Rename columns using code book labels
 #'
-#' @param .data The data to label.
+#' @param data The data to label.
 #' @param path The path to YAML code book.
 #' @param .include An optional character vector of column names to
 #'  apply the code book to.
@@ -20,16 +20,16 @@
 #'   w = c(1, 1, 0, 1, 1)
 #' )
 #' label(ex, system.file("codebook.yml", package = "codebook"))
-label <- function(.data, path = "dictionary.yml", .include = NULL, .exclude = NULL) {
+label <- function(data, path = "dictionary.yml", .include = NULL, .exclude = NULL) {
   check_path(path)
   labels <- get_labels(path)
-  old_names <- names(.data)
+  old_names <- names(data)
   new_names <- old_names
-  modify <- to_modify(.data, labels, .include, .exclude)
+  modify <- to_modify(data, labels, .include, .exclude)
   for (i in modify) {
     new_names[which(old_names == i)] <- labels[[i]]
   }
-  setNames(.data, new_names)
+  setNames(data, new_names)
 }
 
 get_labels <- function(path) {

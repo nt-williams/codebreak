@@ -29,7 +29,7 @@ test_that("can add labels", {
     )
 
   expect_equal(
-    codebook(given, testthat::test_path("test.yml"), .label = TRUE),
+    codebook(given, testthat::test_path("test.yml"), label = TRUE),
     expected
   )
 })

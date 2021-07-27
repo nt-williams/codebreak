@@ -1,8 +1,8 @@
 #' Label data based on a code book.
 #'
-#' @param .data The data to label.
+#' @param data The data to label.
 #' @param path The path to YAML code book.
-#' @param .label Should column names also be renamed according to code book labels?
+#' @param label Should column names also be renamed according to code book labels?
 #' @param .include An optional character vector of column names to
 #'  apply the code book to.
 #' @param .exclude An optional character vector of column names to not apply
@@ -19,14 +19,14 @@
 #'   w = c(1, 1, 0, 1, 1)
 #' )
 #' codebook(ex, system.file("codebook.yml", package = "codebook"))
-codebook <- function(.data, path = "dictionary.yml", .label = FALSE,
+codebook <- function(data, path = "dictionary.yml", label = FALSE,
                      .include = NULL, .exclude = NULL) {
   check_path(path)
   dict <- get_dictionary(path)
-  result <- .data
-  modify <- to_modify(.data, dict, .include, .exclude)
+  result <- data
+  modify <- to_modify(data, dict, .include, .exclude)
 
-  assert_no_unknown_levels(.data, dict, modify)
+  assert_no_unknown_levels(data, dict, modify)
 
   lapply(modify, function(x) {
     result[[x]] <<- sapply(
@@ -37,7 +37,7 @@ codebook <- function(.data, path = "dictionary.yml", .label = FALSE,
     )
   })
 
-  if (isFALSE(.label)) return(result)
+  if (isFALSE(label)) return(result)
   label(result, path, .include, .exclude)
 }
 

@@ -4,10 +4,10 @@
 \alias{label}
 \title{Rename columns using code book labels}
 \usage{
-label(.data, path = "dictionary.yml", .include = NULL, .exclude = NULL)
+label(data, path = "dictionary.yml", .include = NULL, .exclude = NULL)
 }
 \arguments{
-\item{.data}{The data to label.}
+\item{data}{The data to label.}
 
 \item{path}{The path to YAML code book.}
 

@@ -5,19 +5,19 @@
 \title{Label data based on a code book.}
 \usage{
 codebook(
-  .data,
+  data,
   path = "dictionary.yml",
-  .label = FALSE,
+  label = FALSE,
   .include = NULL,
   .exclude = NULL
 )
 }
 \arguments{
-\item{.data}{The data to label.}
+\item{data}{The data to label.}
 
 \item{path}{The path to YAML code book.}
 
-\item{.label}{Should column names also be renamed according to code book labels?}
+\item{label}{Should column names also be renamed according to code book labels?}
 
 \item{.include}{An optional character vector of column names to
 apply the code book to.}
