@@ -8,7 +8,7 @@ codebook(
   data,
   path = "dictionary.yml",
   label = FALSE,
-  as_labelled = FALSE,
+  to_labelled = FALSE,
   .include = NULL,
   .exclude = NULL
 )
@@ -20,7 +20,7 @@ codebook(
 
 \item{label}{Should column names also be renamed according to code book labels?}
 
-\item{as_labelled}{Should the code book be applied using the labelled package?}
+\item{to_labelled}{Should the code book be applied using the labelled package?}
 
 \item{.include}{An optional character vector of column names to
 apply the code book to.}
@@ -29,7 +29,7 @@ apply the code book to.}
 the code book to. Ignored if \code{.include} is specified.}
 }
 \value{
-The data with the columns found in the code book labeled.
+An updated copy of \code{data}.
 }
 \description{
 Label data based on a code book.
