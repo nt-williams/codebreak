@@ -11,3 +11,7 @@ assert_no_unknown_levels <- function(data, dict, vars) {
     }
   }
 }
+
+assert_mode <- function() {
+
+}

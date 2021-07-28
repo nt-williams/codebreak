@@ -20,7 +20,7 @@
 #'   w = c(1, 1, 0, 1, 1)
 #' )
 #' label(ex, system.file("codebook.yml", package = "codebook"))
-label <- function(data, path = "dictionary.yml", .include = NULL, .exclude = NULL) {
+label <- function(data, dict, .path = NULL, .include = NULL, .exclude = NULL) {
   check_path(path)
   labels <- get_labels(path)
   old_names <- names(data)
@@ -32,7 +32,11 @@ label <- function(data, path = "dictionary.yml", .include = NULL, .exclude = NUL
   setNames(data, new_names)
 }
 
-get_labels <- function(path) {
+get_labels_path <- function(path) {
   cb <- yaml::read_yaml(path)
+  get_labels_codebook(cb)
+}
+
+get_labels_codebook <- function(dict) {
   purrr::discard(lapply(cb, function(x) x$label), is.null)
 }

@@ -11,3 +11,11 @@ to_modify <- function(.data, dict, .include, .exclude) {
 
   setdiff(modify, .exclude)
 }
+
+conversion <- function(mode, x) {
+  switch(
+    mode,
+    numeric = as.numeric(x),
+    character = as.character(x)
+  )
+}

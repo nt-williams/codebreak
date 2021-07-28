@@ -20,13 +20,19 @@
 #' )
 #' codebook(ex, system.file("codebook.yml", package = "codebook"))
 codebook <- function(data, path = "dictionary.yml", label = FALSE,
+                     as_labelled = FALSE,
                      .include = NULL, .exclude = NULL) {
   check_path(path)
-  dict <- get_dictionary(path)
+  codebook <- yaml::read_yaml(path)
+  dict <- get_dictionary_codebook(codebook)
   result <- data
   modify <- to_modify(data, dict, .include, .exclude)
 
   assert_no_unknown_levels(data, dict, modify)
+
+  if (as_labelled) {
+    return(set_labelled_labels(data, codebook, modify, label))
+  }
 
   lapply(modify, function(x) {
     result[[x]] <<- sapply(
@@ -41,7 +47,6 @@ codebook <- function(data, path = "dictionary.yml", label = FALSE,
   label(result, path, .include, .exclude)
 }
 
-get_dictionary <- function(path) {
-  cb <- yaml::read_yaml(path)
+get_dictionary_codebook <- function(cb) {
   purrr::discard(lapply(cb, function(x) x$cb), is.null)
 }
