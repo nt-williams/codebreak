@@ -31,12 +31,3 @@ label <- function(data, dict, .path = NULL, .include = NULL, .exclude = NULL) {
   }
   setNames(data, new_names)
 }
-
-get_labels_path <- function(path) {
-  cb <- yaml::read_yaml(path)
-  get_labels_codebook(cb)
-}
-
-get_labels_codebook <- function(dict) {
-  purrr::discard(lapply(cb, function(x) x$label), is.null)
-}

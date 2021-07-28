@@ -4,18 +4,18 @@
 \alias{label}
 \title{Rename columns using code book labels}
 \usage{
-label(data, path = "dictionary.yml", .include = NULL, .exclude = NULL)
+label(data, dict, .path = NULL, .include = NULL, .exclude = NULL)
 }
 \arguments{
 \item{data}{The data to label.}
-
-\item{path}{The path to YAML code book.}
 
 \item{.include}{An optional character vector of column names to
 apply the code book to.}
 
 \item{.exclude}{An optional character vector of column names to not apply
 the code book to. Ignored if \code{.include} is specified.}
+
+\item{path}{The path to YAML code book.}
 }
 \value{
 The data with the columns found in the code book renamed.

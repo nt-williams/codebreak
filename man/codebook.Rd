@@ -8,6 +8,7 @@ codebook(
   data,
   path = "dictionary.yml",
   label = FALSE,
+  as_labelled = FALSE,
   .include = NULL,
   .exclude = NULL
 )
@@ -18,6 +19,8 @@ codebook(
 \item{path}{The path to YAML code book.}
 
 \item{label}{Should column names also be renamed according to code book labels?}
+
+\item{as_labelled}{Should the code book be applied using the labelled package?}
 
 \item{.include}{An optional character vector of column names to
 apply the code book to.}
