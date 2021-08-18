@@ -1,14 +1,16 @@
-#' Label data based on a code book.
+#' Label data based on a codebook.
 #'
 #' @param data The data to label.
-#' @param path The path to YAML code book.
-#' @param label Should column names also be renamed according to code book labels?
+#' @param path The path to YAML codebook.
+#' @param label Should column names also be renamed according to codebook labels?
+#' @param as_labelled Should the codebook be applied using the labelled package?
 #' @param .include An optional character vector of column names to
-#'  apply the code book to.
+#'  apply the codebook to.
 #' @param .exclude An optional character vector of column names to not apply
-#'  the code book to. Ignored if \code{.include} is specified.
+#'  the codebook to. Ignored if \code{.include} is specified.
 #'
-#' @return The data with the columns found in the code book labeled.
+#' @return An updated copy of \code{data}.
+#'
 #' @export
 #'
 #' @examples
@@ -18,30 +20,53 @@
 #'   z = rnorm(5),
 #'   w = c(1, 1, 0, 1, 1)
 #' )
+#'
 #' codebook(ex, system.file("codebook.yml", package = "codebook"))
-codebook <- function(data, path = "dictionary.yml", label = FALSE,
+codebook <- function(data, path = "codebook.yml",
+                     label = FALSE, as_labelled = FALSE,
                      .include = NULL, .exclude = NULL) {
-  check_path(path)
-  dict <- get_dictionary(path)
-  result <- data
-  modify <- to_modify(data, dict, .include, .exclude)
+  assert_valid_path(path)
+  codebook <- yaml::read_yaml(path)
 
-  assert_no_unknown_levels(data, dict, modify)
+  if (as_labelled) {
+    return(set_labelled_labels(data, codebook, label, .include, .exclude))
+  }
 
-  lapply(modify, function(x) {
-    result[[x]] <<- sapply(
-      as.character(result[[x]]), function(key) {
-        if (is.na(key)) return(NA_character_)
-        dict[[x]][[key]]
-      }, USE.NAMES = FALSE
-    )
-  })
-
-  if (isFALSE(label)) return(result)
-  label(result, path, .include, .exclude)
+  set_codebook_labels(data, codebook, label, .include, .exclude)
 }
 
-get_dictionary <- function(path) {
-  cb <- yaml::read_yaml(path)
-  purrr::discard(lapply(cb, function(x) x$cb), is.null)
+#' Rename columns using code book labels
+#'
+#' @param data The data to label.
+#' @param path The path to YAML codebook.
+#' @param as_labelled Should the codebook labels be applied using the labelled package?
+#' @param .include An optional character vector of column names to
+#'  apply the codebook to.
+#' @param .exclude An optional character vector of column names to not apply
+#'  the codebook to. Ignored if \code{.include} is specified.
+#'
+#' @return The data with the columns found in the code book renamed.
+#' @export
+#'
+#' @importFrom stats setNames
+#'
+#' @examples
+#' ex <- data.frame(
+#'   x = c(1, 2, 5, 3, 4),
+#'   y = c(0, 1, 1, 0, 1),
+#'   z = rnorm(5),
+#'   w = c(1, 1, 0, 1, 1)
+#' )
+#'
+#' label(ex, system.file("codebook.yml", package = "codebook"))
+label <- function(data, path = "codebook.yml",
+                  as_labelled = FALSE, .include = NULL, .exclude = NULL) {
+  assert_valid_path(path)
+  codebook <- yaml::read_yaml(path)
+
+  if (as_labelled) {
+    return(set_labelled_var_labels(data, codebook, .include, .exclude))
+  }
+
+  set_codebook_var_labels(data, codebook, .include, .exclude)
 }

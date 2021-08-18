@@ -11,3 +11,38 @@ to_modify <- function(.data, dict, .include, .exclude) {
 
   setdiff(modify, .exclude)
 }
+
+get_dictionary_codebook <- function(cb) {
+  dict_list <- purrr::discard(lapply(cb, function(x) x$cb), is.null)
+
+  result <- lapply(
+    names(dict_list),
+    function(x) get_key_value_pairs(dict_list, x)
+  )
+
+  setNames(result, names(dict_list))
+}
+
+get_key_value_pairs <- function(dict, var) {
+  list(
+    key = names(dict[[var]]),
+    values = unlist(dict[[var]], use.names = FALSE)
+  )
+}
+
+get_labels_path <- function(path) {
+  cb <- yaml::read_yaml(path)
+  get_labels_codebook(cb)
+}
+
+get_labels_codebook <- function(cb) {
+  purrr::discard(lapply(cb, function(x) x$label), is.null)
+}
+
+conversion <- function(mode, x) {
+  switch(
+    mode,
+    numeric = as.numeric(x),
+    character = as.character(x)
+  )
+}

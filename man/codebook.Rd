@@ -2,12 +2,13 @@
 % Please edit documentation in R/codebook.R
 \name{codebook}
 \alias{codebook}
-\title{Label data based on a code book.}
+\title{Label data based on a codebook.}
 \usage{
 codebook(
   data,
-  path = "dictionary.yml",
+  path = "codebook.yml",
   label = FALSE,
+  as_labelled = FALSE,
   .include = NULL,
   .exclude = NULL
 )
@@ -15,21 +16,23 @@ codebook(
 \arguments{
 \item{data}{The data to label.}
 
-\item{path}{The path to YAML code book.}
+\item{path}{The path to YAML codebook.}
 
-\item{label}{Should column names also be renamed according to code book labels?}
+\item{label}{Should column names also be renamed according to codebook labels?}
+
+\item{as_labelled}{Should the codebook be applied using the labelled package?}
 
 \item{.include}{An optional character vector of column names to
-apply the code book to.}
+apply the codebook to.}
 
 \item{.exclude}{An optional character vector of column names to not apply
-the code book to. Ignored if \code{.include} is specified.}
+the codebook to. Ignored if \code{.include} is specified.}
 }
 \value{
-The data with the columns found in the code book labeled.
+An updated copy of \code{data}.
 }
 \description{
-Label data based on a code book.
+Label data based on a codebook.
 }
 \examples{
 ex <- data.frame(
@@ -38,5 +41,6 @@ ex <- data.frame(
   z = rnorm(5),
   w = c(1, 1, 0, 1, 1)
 )
+
 codebook(ex, system.file("codebook.yml", package = "codebook"))
 }
