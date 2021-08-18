@@ -1,5 +1,5 @@
 test_that("detects incorrect path", {
-  expect_error(check_path(testthat::test_path("doesnt_exist.yml")))
+  expect_error(assert_valid_path(testthat::test_path("doesnt_exist.yml")))
 })
 
 test_that("stops for unknown levels", {

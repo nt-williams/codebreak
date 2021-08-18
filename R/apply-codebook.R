@@ -1,14 +1,14 @@
 set_codebook_labels <- function(data, cb, label, .include, .exclude) {
-  result <- codebook_val_labels(data, cb, .include, .exclude)
+  result <- set_codebook_val_labels(data, cb, .include, .exclude)
 
   if (isFALSE(label)) {
     return(result)
   }
 
-  codebook_var_labels(result, cb, .include, .exclude)
+  set_codebook_var_labels(result, cb, .include, .exclude)
 }
 
-codebook_val_labels <- function(data, cb, .include, .exclude) {
+set_codebook_val_labels <- function(data, cb, .include, .exclude) {
   dict <- get_dictionary_codebook(cb)
   modify <- to_modify(data, dict, .include, .exclude)
 
@@ -25,7 +25,7 @@ codebook_val_labels <- function(data, cb, .include, .exclude) {
   data
 }
 
-codebook_var_labels <- function(data, cb, .include, .exclude) {
+set_codebook_var_labels <- function(data, cb, .include, .exclude) {
   labels <- get_labels_codebook(cb)
   modify <- to_modify(data, labels, .include, .exclude)
   old_names <- names(data)
@@ -39,22 +39,22 @@ codebook_var_labels <- function(data, cb, .include, .exclude) {
 }
 
 set_labelled_labels <- function(data, cb, var_labels, .include, .exclude) {
-  result <- labelled_val_labels(data, cb, .include, .exclude)
+  result <- set_labelled_val_labels(data, cb, .include, .exclude)
 
   if (isFALSE(var_labels)) {
     return(result)
   }
 
-  labelled_var_labels(result, cb, .include, .exclude)
+  set_labelled_var_labels(result, cb, .include, .exclude)
 }
 
-labelled_var_labels <- function(data, cb, .include, .exclude) {
+set_labelled_var_labels <- function(data, cb, .include, .exclude) {
   labels <- get_labels_codebook(cb)
   modify <- to_modify(data, labels, .include, .exclude)
   labelled::set_variable_labels(data, .labels = labels[modify], .strict = FALSE)
 }
 
-labelled_val_labels <- function(data, cb, .include, .exclude) {
+set_labelled_val_labels <- function(data, cb, .include, .exclude) {
   dict <- get_dictionary_codebook(cb)
   modify <- to_modify(data, dict, .include, .exclude)
 

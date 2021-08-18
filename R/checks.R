@@ -1,4 +1,4 @@
-check_path <- function(path) {
+assert_valid_path <- function(path) {
   if (!file.exists(path)) stop("Codebook not found. Check your file path!")
 }
 
@@ -10,8 +10,4 @@ assert_no_unknown_levels <- function(data, dict, vars) {
       stop(var, " has values in the data that aren't in the code book")
     }
   }
-}
-
-assert_mode <- function() {
-
 }
