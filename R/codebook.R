@@ -22,7 +22,7 @@
 #' )
 #' codebook(ex, system.file("codebook.yml", package = "codebook"))
 codebook <- function(data, path = "dictionary.yml", label = FALSE,
-                     to_labelled = FALSE, .include = NULL, .exclude = NULL) {
+                     as_labelled = FALSE, .include = NULL, .exclude = NULL) {
   check_path(path)
   codebook <- yaml::read_yaml(path)
 
