@@ -1,13 +1,13 @@
-#' Label data based on a code book.
+#' Label data based on a codebook.
 #'
 #' @param data The data to label.
-#' @param path The path to YAML code book.
-#' @param label Should column names also be renamed according to code book labels?
-#' @param to_labelled Should the code book be applied using the labelled package?
+#' @param path The path to YAML codebook.
+#' @param label Should column names also be renamed according to codebook labels?
+#' @param as_labelled Should the codebook be applied using the labelled package?
 #' @param .include An optional character vector of column names to
-#'  apply the code book to.
+#'  apply the codebook to.
 #' @param .exclude An optional character vector of column names to not apply
-#'  the code book to. Ignored if \code{.include} is specified.
+#'  the codebook to. Ignored if \code{.include} is specified.
 #'
 #' @return An updated copy of \code{data}.
 #'
@@ -36,11 +36,12 @@ codebook <- function(data, path, label = FALSE, as_labelled = FALSE,
 #' Rename columns using code book labels
 #'
 #' @param data The data to label.
-#' @param path The path to YAML code book.
+#' @param path The path to YAML codebook.
+#' @param as_labelled Should the codebook labels be applied using the labelled package?
 #' @param .include An optional character vector of column names to
-#'  apply the code book to.
+#'  apply the codebook to.
 #' @param .exclude An optional character vector of column names to not apply
-#'  the code book to. Ignored if \code{.include} is specified.
+#'  the codebook to. Ignored if \code{.include} is specified.
 #'
 #' @return The data with the columns found in the code book renamed.
 #' @export
