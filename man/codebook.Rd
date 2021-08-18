@@ -6,7 +6,7 @@
 \usage{
 codebook(
   data,
-  path,
+  path = "codebook.yml",
   label = FALSE,
   as_labelled = FALSE,
   .include = NULL,
@@ -41,5 +41,6 @@ ex <- data.frame(
   z = rnorm(5),
   w = c(1, 1, 0, 1, 1)
 )
+
 codebook(ex, system.file("codebook.yml", package = "codebook"))
 }

@@ -20,8 +20,10 @@
 #'   z = rnorm(5),
 #'   w = c(1, 1, 0, 1, 1)
 #' )
+#'
 #' codebook(ex, system.file("codebook.yml", package = "codebook"))
-codebook <- function(data, path, label = FALSE, as_labelled = FALSE,
+codebook <- function(data, path = "codebook.yml",
+                     label = FALSE, as_labelled = FALSE,
                      .include = NULL, .exclude = NULL) {
   assert_valid_path(path)
   codebook <- yaml::read_yaml(path)
@@ -55,8 +57,10 @@ codebook <- function(data, path, label = FALSE, as_labelled = FALSE,
 #'   z = rnorm(5),
 #'   w = c(1, 1, 0, 1, 1)
 #' )
+#'
 #' label(ex, system.file("codebook.yml", package = "codebook"))
-label <- function(data, path, as_labelled = FALSE, .include = NULL, .exclude = NULL) {
+label <- function(data, path = "codebook.yml",
+                  as_labelled = FALSE, .include = NULL, .exclude = NULL) {
   assert_valid_path(path)
   codebook <- yaml::read_yaml(path)
 

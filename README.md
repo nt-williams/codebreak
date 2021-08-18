@@ -101,3 +101,23 @@ codebook(some_data, .label = TRUE)
 #> 4     Random         No        8.9        Yes
 #> 5     Factor        Yes        9.0        Yes
 ```
+
+## Integration with the `labelled` package
+
+`codebook()` and `label()` can return data with the codebook applied
+using the [`labelled`](https://CRAN.R-project.org/package=labelled)
+package by setting `as_labelled = TRUE`.
+
+``` r
+some_data <- tibble::as_tibble(some_data)
+
+codebook(some_data, as_labelled = TRUE)
+#> # A tibble: 5 × 4
+#>            x         y     z         w
+#>    <dbl+lbl> <dbl+lbl> <dbl> <dbl+lbl>
+#> 1 1 [These]    0 [No]    5.2   1 [Yes]
+#> 2 2 [Are]      1 [Yes]   3.1   1 [Yes]
+#> 3 5 [Labels]   1 [Yes]   5.6   0 [No] 
+#> 4 3 [Random]   0 [No]    8.9   1 [Yes]
+#> 5 4 [Factor]   1 [Yes]   9     1 [Yes]
+```

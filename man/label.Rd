@@ -4,7 +4,13 @@
 \alias{label}
 \title{Rename columns using code book labels}
 \usage{
-label(data, path, as_labelled = FALSE, .include = NULL, .exclude = NULL)
+label(
+  data,
+  path = "codebook.yml",
+  as_labelled = FALSE,
+  .include = NULL,
+  .exclude = NULL
+)
 }
 \arguments{
 \item{data}{The data to label.}
@@ -32,5 +38,6 @@ ex <- data.frame(
   z = rnorm(5),
   w = c(1, 1, 0, 1, 1)
 )
+
 label(ex, system.file("codebook.yml", package = "codebook"))
 }
