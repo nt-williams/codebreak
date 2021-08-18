@@ -35,7 +35,7 @@ get_labels_path <- function(path) {
   get_labels_codebook(cb)
 }
 
-get_labels_codebook <- function(dict) {
+get_labels_codebook <- function(cb) {
   purrr::discard(lapply(cb, function(x) x$label), is.null)
 }
 
