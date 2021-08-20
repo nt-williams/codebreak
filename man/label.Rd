@@ -39,5 +39,5 @@ ex <- data.frame(
   w = c(1, 1, 0, 1, 1)
 )
 
-label(ex, system.file("codebook.yml", package = "codebook"))
+label(ex, system.file("codebook.yml", package = "codebreak"))
 }

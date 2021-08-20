@@ -42,5 +42,5 @@ ex <- data.frame(
   w = c(1, 1, 0, 1, 1)
 )
 
-decode(ex, system.file("codebook.yml", package = "codebook"))
+decode(ex, system.file("codebook.yml", package = "codebreak"))
 }

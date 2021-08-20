@@ -21,7 +21,7 @@
 #'   w = c(1, 1, 0, 1, 1)
 #' )
 #'
-#' decode(ex, system.file("codebook.yml", package = "codebook"))
+#' decode(ex, system.file("codebook.yml", package = "codebreak"))
 decode <- function(data, path = "codebook.yml",
                    label = FALSE, as_labelled = FALSE,
                    .include = NULL, .exclude = NULL) {
@@ -58,7 +58,7 @@ decode <- function(data, path = "codebook.yml",
 #'   w = c(1, 1, 0, 1, 1)
 #' )
 #'
-#' label(ex, system.file("codebook.yml", package = "codebook"))
+#' label(ex, system.file("codebook.yml", package = "codebreak"))
 label <- function(data, path = "codebook.yml",
                   as_labelled = FALSE, .include = NULL, .exclude = NULL) {
   assert_valid_path(path)
