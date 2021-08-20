@@ -1,4 +1,4 @@
 library(testthat)
-library(codebook)
+library(codebreak)
 
-test_check("codebook")
+test_check("codebreak")

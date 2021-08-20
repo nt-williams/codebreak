@@ -9,7 +9,7 @@ Authors@R:
            email = "ntwilliams.personal@gmail.com", 
            comment = c(ORCID = "0000-0002-1378-4831"))
 Description: A light-weight framework for labeling coded data using a 
-  codebook saved as YAML.
+  codebook saved as YAML text file.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
