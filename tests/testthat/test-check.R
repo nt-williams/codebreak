@@ -4,6 +4,6 @@ test_that("detects incorrect path", {
 
 test_that("stops for unknown levels", {
   bad <- data.frame(x = c(1, 2, 3, 4, 5, 6))
-  expect_error(codebook(bad, testthat::test_path("test.yml")))
+  expect_error(decode(bad, testthat::test_path("test.yml")))
 })
 

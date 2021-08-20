@@ -14,7 +14,7 @@ test_that("basic coding works", {
     )
 
   expect_equal(
-    codebook(given, testthat::test_path("test.yml")),
+    decode(given, testthat::test_path("test.yml")),
     expected
   )
 })
@@ -29,12 +29,12 @@ test_that("can add labels", {
     )
 
   expect_equal(
-    codebook(given, testthat::test_path("test.yml"), label = TRUE),
+    decode(given, testthat::test_path("test.yml"), label = TRUE),
     expected
   )
 
   expect_equal(
-    label(codebook(given, testthat::test_path("test.yml")),
+    label(decode(given, testthat::test_path("test.yml")),
           testthat::test_path("test.yml")),
     expected
   )

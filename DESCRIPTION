@@ -1,4 +1,4 @@
-Package: codebook
+Package: codebreak
 Type: Package
 Title: Label Data Using a YAML Codebook
 Version: 0.1.0
@@ -9,7 +9,7 @@ Authors@R:
            email = "ntwilliams.personal@gmail.com", 
            comment = c(ORCID = "0000-0002-1378-4831"))
 Description: A light-weight framework for labeling coded data using a 
-  code book saved as YAML.
+  codebook saved as YAML.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

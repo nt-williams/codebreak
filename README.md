@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# codebook
+# codebreak
 
 <!-- badges: start -->
 
@@ -12,20 +12,20 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 
 <!-- badges: end -->
 
-Quickly and easily label your data using code books saved as a
+Quickly and easily label your data using codebooks saved as a
 [YAML](https://yaml.org/) text file.
 
 ## Installation
 
 ``` r
-remotes::install_github("nt-williams/codebook")
+remotes::install_github("nt-williams/codebreak")
 ```
 
 or
 
 ``` r
 # Install 'codebook' from 'nt-williams' universe
-install.packages('codebook', repos = 'https://nt-williams.r-universe.dev')
+install.packages('codebreak', repos = 'https://nt-williams.r-universe.dev')
 ```
 
 ## Applying a code book
@@ -39,7 +39,7 @@ some_data <- data.frame(
 )
 ```
 
-Code books are created as YAML text files and are saved in the project
+Codebooks are created as YAML text files and are saved in the project
 directory (or somewhere else) as `codebook.yml` (or as something else).
 
 ``` yaml
@@ -66,10 +66,10 @@ w:
   cb: *binary
 ```
 
-Apply the code book to the data:
+Apply the codebook to the data:
 
 ``` r
-codebook(some_data)
+codebreak::decode(some_data)
 #>        x   y   z   w
 #> 1  These  No 5.2 Yes
 #> 2    Are Yes 3.1 Yes
@@ -78,10 +78,10 @@ codebook(some_data)
 #> 5 Factor Yes 9.0 Yes
 ```
 
-Rename columns based on the code book labels:
+Rename columns based on the codebook labels:
 
 ``` r
-label(some_data)
+codebreak::label(some_data)
 #>   Variable X Variable Y Variable Z Variable W
 #> 1          1          0        5.2          1
 #> 2          2          1        3.1          1
@@ -90,10 +90,10 @@ label(some_data)
 #> 5          4          1        9.0          1
 ```
 
-Apply the code book and rename columns:
+Apply the codebook and rename columns:
 
 ``` r
-codebook(some_data, .label = TRUE)
+codebreak::decode(some_data, .label = TRUE)
 #>   Variable X Variable Y Variable Z Variable W
 #> 1      These         No        5.2        Yes
 #> 2        Are        Yes        3.1        Yes
@@ -104,14 +104,14 @@ codebook(some_data, .label = TRUE)
 
 ## Integration with the `labelled` package
 
-`codebook()` and `label()` can return data with the codebook applied
-using the [`labelled`](https://CRAN.R-project.org/package=labelled)
-package by setting `as_labelled = TRUE`.
+`decode()` and `label()` can return data with the codebook applied using
+the [`labelled`](https://CRAN.R-project.org/package=labelled) package by
+setting `as_labelled = TRUE`.
 
 ``` r
 some_data <- tibble::as_tibble(some_data)
 
-codebook(some_data, as_labelled = TRUE)
+codebreak::decode(some_data, as_labelled = TRUE)
 #> # A tibble: 5 × 4
 #>            x         y     z         w
 #>    <dbl+lbl> <dbl+lbl> <dbl> <dbl+lbl>

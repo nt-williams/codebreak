@@ -21,10 +21,10 @@
 #'   w = c(1, 1, 0, 1, 1)
 #' )
 #'
-#' codebook(ex, system.file("codebook.yml", package = "codebook"))
-codebook <- function(data, path = "codebook.yml",
-                     label = FALSE, as_labelled = FALSE,
-                     .include = NULL, .exclude = NULL) {
+#' decode(ex, system.file("codebook.yml", package = "codebook"))
+decode <- function(data, path = "codebook.yml",
+                   label = FALSE, as_labelled = FALSE,
+                   .include = NULL, .exclude = NULL) {
   assert_valid_path(path)
   codebook <- yaml::read_yaml(path)
 
