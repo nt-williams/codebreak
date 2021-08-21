@@ -44,9 +44,9 @@ directory (or somewhere else) as `codebook.yml` (or as something else).
 
 ``` yaml
 x:
-  label: Variable X
+  label: Variable X # include meaningful variable descriptions
   cb:
-    1: These
+    1: These        # convert variable codes to labels
     2: Are
     3: Random
     4: Character
@@ -54,10 +54,10 @@ x:
 
 "y":
   label: Variable Y
-  cb: &binary
+  cb: &binary        # reduce repetition with anchors
     0: "No"
     1: "Yes"
-    9: null
+    9: null          # account for coded missing values
 
 z:
   label: Variable Z
