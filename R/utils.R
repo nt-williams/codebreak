@@ -24,15 +24,13 @@ get_dictionary_codebook <- function(cb) {
 }
 
 get_key_value_pairs <- function(dict, var) {
-  list(
-    key = names(dict[[var]]),
-    values = unlist(dict[[var]], use.names = FALSE)
-  )
-}
+  mod <- dict[[var]]
+  mod[sapply(mod, is.null)] <- NA
 
-get_labels_path <- function(path) {
-  cb <- yaml::read_yaml(path)
-  get_labels_codebook(cb)
+  list(
+    key = names(mod),
+    values = unlist(mod, use.names = FALSE)
+  )
 }
 
 get_labels_codebook <- function(cb) {
@@ -45,4 +43,24 @@ conversion <- function(mode, x) {
     numeric = as.numeric(x),
     character = as.character(x)
   )
+}
+
+fix_labelled_na <- function(data, vars) {
+  for (var in vars) {
+    data[[var]] <- labelled_na_to_na(data[[var]])
+  }
+  data
+}
+
+labelled_na_to_na <- function(var) {
+  if (!labelled::is.labelled(var)) {
+    return(var)
+  }
+
+  vals_labelled <- as.character(haven::as_factor(var, "labels"))
+  var[is.na(vals_labelled)] <- NA
+
+  labels_attr <- attr(attr(var, "labels"), "names")
+  attr(var, "labels") <- attr(var, "labels")[!is.na(labels_attr)]
+  var
 }

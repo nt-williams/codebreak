@@ -68,5 +68,8 @@ set_labelled_val_labels <- function(data, cb, .include, .exclude) {
 
   labels <- setNames(labels, modify)
 
-  labelled::set_value_labels(data, .labels = labels, .strict = FALSE)
+  fix_labelled_na(
+    labelled::set_value_labels(data, .labels = labels, .strict = FALSE),
+    modify
+  )
 }

@@ -12,6 +12,7 @@ x:
   cb:
     0: "No"
     1: "Yes"
+    9: null
 
 z:
   label: Variable Z
