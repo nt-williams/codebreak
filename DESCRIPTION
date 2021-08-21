@@ -21,4 +21,6 @@ Imports:
 RoxygenNote: 7.1.1
 Suggests: 
     testthat (>= 3.0.0)
+URL: https://github.com/nt-williams/codebreak
+BugReports: https://github.com/nt-williams/codebreak/issues
 Config/testthat/edition: 3
