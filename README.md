@@ -117,12 +117,12 @@ some_data <- tibble::as_tibble(some_data)
 
 codebreak::decode(some_data, as_labelled = TRUE)
 #> # A tibble: 6 × 4
-#>             x         y     z     w
-#>     <dbl+lbl> <dbl+lbl> <dbl> <dbl>
-#> 1  1 [These]    0 [No]    5.2     1
-#> 2  2 [Are]      1 [Yes]   3.1     1
-#> 3  5 [Labels]   1 [Yes]   5.6     0
-#> 4  3 [Random]   0 [No]    8.9     1
-#> 5  4 [Factor]   1 [Yes]   9       1
-#> 6 NA           NA         7.2     1
+#>               x         y     z         w
+#>       <dbl+lbl> <dbl+lbl> <dbl> <dbl+lbl>
+#> 1 1 [These]       0 [No]    5.2   1 [Yes]
+#> 2 2 [Are]         1 [Yes]   3.1   1 [Yes]
+#> 3 5 [Labels]      1 [Yes]   5.6   0 [No] 
+#> 4 3 [Random]      0 [No]    8.9   1 [Yes]
+#> 5 4 [Character]   1 [Yes]   9     1 [Yes]
+#> 6 1 [These]      NA         7.2   1 [Yes]
 ```
