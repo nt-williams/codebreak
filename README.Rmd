@@ -79,6 +79,7 @@ Import and apply the codebook to the data:
 
 ```{r}
 cb <- codebreak::Codebook$new(system.file("codebook.yml", package = "codebreak"))
+cb
 
 cb$decode(some_data)
 ```
