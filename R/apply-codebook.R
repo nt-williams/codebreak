@@ -9,7 +9,7 @@ set_codebook_labels <- function(data, cb, label, .include, .exclude) {
 }
 
 set_codebook_val_labels <- function(data, cb, .include, .exclude) {
-  dict <- get_dictionary_codebook(cb)
+  dict <- cb$dictionary
   modify <- to_modify(data, dict, .include, .exclude)
 
   assert_no_unknown_levels(data, dict, modify)
@@ -18,7 +18,8 @@ set_codebook_val_labels <- function(data, cb, .include, .exclude) {
     data[[var]] <- plyr::mapvalues(
       as.character(data[[var]]),
       from = dict[[var]][["key"]],
-      to = dict[[var]][["values"]]
+      to = dict[[var]][["values"]],
+      warn_missing = FALSE
     )
   }
 
@@ -26,7 +27,7 @@ set_codebook_val_labels <- function(data, cb, .include, .exclude) {
 }
 
 set_codebook_var_labels <- function(data, cb, .include, .exclude) {
-  labels <- get_labels_codebook(cb)
+  labels <- cb$labels
   modify <- to_modify(data, labels, .include, .exclude)
   old_names <- names(data)
   new_names <- old_names
@@ -45,17 +46,23 @@ set_labelled_labels <- function(data, cb, var_labels, .include, .exclude) {
     return(result)
   }
 
-  set_labelled_var_labels(result, cb, .include, .exclude)
+  set_labelled_var_labels(result, cb, .include, .exclude, make_labelled = FALSE)
 }
 
-set_labelled_var_labels <- function(data, cb, .include, .exclude) {
-  labels <- get_labels_codebook(cb)
+set_labelled_var_labels <- function(data, cb, .include, .exclude, make_labelled) {
+  labels <- cb$labels
   modify <- to_modify(data, labels, .include, .exclude)
+
+  if (isFALSE(make_labelled)) {
+    return(labelled::set_variable_labels(data, .labels = labels[modify], .strict = FALSE))
+  }
+
+  for (m in modify) data[[m]] <- labelled::labelled(data[[m]])
   labelled::set_variable_labels(data, .labels = labels[modify], .strict = FALSE)
 }
 
 set_labelled_val_labels <- function(data, cb, .include, .exclude) {
-  dict <- get_dictionary_codebook(cb)
+  dict <- cb$dictionary
   modify <- to_modify(data, dict, .include, .exclude)
 
   assert_no_unknown_levels(data, dict, modify)

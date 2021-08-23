@@ -7,8 +7,8 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![R-CMD-check](https://github.com/nt-williams/dictionary/workflows/R-CMD-check/badge.svg)](https://github.com/nt-williams/dictionary/actions)
-[![codecov](https://codecov.io/gh/nt-williams/codebook/branch/main/graph/badge.svg?token=QGGA7OE5UY)](https://codecov.io/gh/nt-williams/codebook)
+[![R-CMD-check](https://github.com/nt-williams/dictionary/workflows/R-CMD-check/badge.svg)](https://github.com/nt-williams/codebreak/actions)
+[![codecov](https://codecov.io/gh/nt-williams/codebreak/branch/main/graph/badge.svg?token=QGGA7OE5UY)](https://codecov.io/gh/nt-williams/codebreak)
 
 <!-- badges: end -->
 
@@ -67,10 +67,17 @@ w:
   cb: *binary
 ```
 
-Apply the codebook to the data:
+Import and apply the codebook to the data:
 
 ``` r
-codebreak::decode(some_data)
+cb <- codebreak::Codebook$new(system.file("codebook.yml", package = "codebreak"))
+cb
+#> codebook: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/codebreak/codebook.yml 
+#> 
+#> decode data with `<obj>$decode()`
+#> label data with `<obj>$label()`
+
+cb$decode(some_data)
 #>           x    y   z   w
 #> 1     These   No 5.2 Yes
 #> 2       Are  Yes 3.1 Yes
@@ -83,7 +90,7 @@ codebreak::decode(some_data)
 Rename columns based on the codebook labels:
 
 ``` r
-codebreak::label(some_data)
+cb$label(some_data)
 #>   Variable X Variable Y Variable Z Variable W
 #> 1          1          0        5.2          1
 #> 2          2          1        3.1          1
@@ -96,7 +103,7 @@ codebreak::label(some_data)
 Apply the codebook and rename columns:
 
 ``` r
-codebreak::decode(some_data, label = TRUE)
+cb$decode(some_data, label = TRUE)
 #>   Variable X Variable Y Variable Z Variable W
 #> 1      These         No        5.2        Yes
 #> 2        Are        Yes        3.1        Yes
@@ -115,7 +122,7 @@ setting `as_labelled = TRUE`.
 ``` r
 some_data <- tibble::as_tibble(some_data)
 
-codebreak::decode(some_data, as_labelled = TRUE)
+cb$decode(some_data, as_labelled = TRUE)
 #> # A tibble: 6 × 4
 #>               x         y     z         w
 #>       <dbl+lbl> <dbl+lbl> <dbl> <dbl+lbl>

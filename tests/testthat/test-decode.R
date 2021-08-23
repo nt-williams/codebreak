@@ -5,6 +5,8 @@ given <-
     z = c(1.3, 4.2, 3.3, 6.78, 9.14, 5.55)
   )
 
+cb <- Codebook$new(testthat::test_path("test.yml"))
+
 test_that("basic coding works", {
   expected <-
     data.frame(
@@ -14,7 +16,7 @@ test_that("basic coding works", {
     )
 
   expect_equal(
-    decode(given, testthat::test_path("test.yml")),
+    cb$decode(given),
     expected
   )
 })
@@ -29,13 +31,12 @@ test_that("can add labels", {
     )
 
   expect_equal(
-    decode(given, testthat::test_path("test.yml"), label = TRUE),
+    cb$decode(given, label = TRUE),
     expected
   )
 
   expect_equal(
-    label(decode(given, testthat::test_path("test.yml")),
-          testthat::test_path("test.yml")),
+    cb$label(cb$decode(given)),
     expected
   )
 })
@@ -61,21 +62,17 @@ test_that("as_labelled working correctly, decode", {
     )
 
   expect_equal(
-    decode(given,
-           testthat::test_path("test.yml"),
-           as_labelled = TRUE,
-           label = TRUE,
-           .exclude = "z"),
+    cb$decode(given,
+              as_labelled = TRUE,
+              label = TRUE,
+              .exclude = "z"),
     expected
   )
 })
 
 test_that("as_labelled working correctly, label", {
-  x <- c(1, 2, 5, 3, 4, 1)
-  labelled::var_label(x) <- "Variable X"
-
-  y <- c(0, 1, 1, NA, 1, 9)
-  labelled::var_label(y) <- "Variable Y"
+  x <- labelled::labelled(c(1, 2, 5, 3, 4, 1), label = "Variable X")
+  y <- labelled::labelled(c(0, 1, 1, NA, 1, 9), label = "Variable Y")
 
   expected <-
     data.frame(
@@ -85,10 +82,9 @@ test_that("as_labelled working correctly, label", {
     )
 
   expect_equal(
-    label(given,
-          testthat::test_path("test.yml"),
-          as_labelled = TRUE,
-          .exclude = "z"),
+    cb$label(given,
+             as_labelled = TRUE,
+             .exclude = "z"),
     expected
   )
 })

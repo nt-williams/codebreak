@@ -18,6 +18,7 @@ Imports:
     labelled,
     plyr,
     purrr,
+    R6,
     yaml
 RoxygenNote: 7.1.1
 Suggests: 
