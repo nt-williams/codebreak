@@ -18,7 +18,8 @@ Imports:
     labelled,
     plyr,
     purrr,
-    R6
+    R6,
+    yaml
 RoxygenNote: 7.2.1
 Suggests: 
     testthat (>= 3.0.0)

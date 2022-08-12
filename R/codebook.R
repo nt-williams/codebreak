@@ -23,6 +23,7 @@ Codebook <- R6::R6Class(
     #'
     #' @examples
     #' Codebook$new(system.file("codebook.yml", package = "codebreak"))
+    #' @importFrom yaml read_yaml
     initialize = function(path = "codebook.yml") {
       assert_valid_path(path)
 
