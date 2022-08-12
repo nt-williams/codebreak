@@ -3,6 +3,8 @@
 #' @description Decode and label data using a codebook saved as a YAML text file.
 #'
 #' @export
+#'
+#' @importFrom R6 R6Class
 Codebook <- R6::R6Class(
   "Codebook",
   public = list(

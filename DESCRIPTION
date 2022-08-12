@@ -18,9 +18,8 @@ Imports:
     labelled,
     plyr,
     purrr,
-    R6,
-    yaml
-RoxygenNote: 7.1.1
+    R6
+RoxygenNote: 7.2.1
 Suggests: 
     testthat (>= 3.0.0)
 URL: https://github.com/nt-williams/codebreak

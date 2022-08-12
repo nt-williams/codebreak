@@ -53,15 +53,15 @@ cb$label(ex)
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{Codebook$new()}}
-\item \href{#method-decode}{\code{Codebook$decode()}}
-\item \href{#method-label}{\code{Codebook$label()}}
-\item \href{#method-print}{\code{Codebook$print()}}
+\item \href{#method-Codebook-new}{\code{Codebook$new()}}
+\item \href{#method-Codebook-decode}{\code{Codebook$decode()}}
+\item \href{#method-Codebook-label}{\code{Codebook$label()}}
+\item \href{#method-Codebook-print}{\code{Codebook$print()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-Codebook-new"></a>}}
+\if{latex}{\out{\hypertarget{method-Codebook-new}{}}}
 \subsection{Method \code{new()}}{
 Import a YAML codebook
 \subsection{Usage}{
@@ -88,8 +88,8 @@ A new `Codebook` object.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-decode"></a>}}
-\if{latex}{\out{\hypertarget{method-decode}{}}}
+\if{html}{\out{<a id="method-Codebook-decode"></a>}}
+\if{latex}{\out{\hypertarget{method-Codebook-decode}{}}}
 \subsection{Method \code{decode()}}{
 Decode data.
 \subsection{Usage}{
@@ -140,8 +140,8 @@ cb$decode(ex)
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-label"></a>}}
-\if{latex}{\out{\hypertarget{method-label}{}}}
+\if{html}{\out{<a id="method-Codebook-label"></a>}}
+\if{latex}{\out{\hypertarget{method-Codebook-label}{}}}
 \subsection{Method \code{label()}}{
 Label data.
 \subsection{Usage}{
@@ -180,8 +180,8 @@ cb$label(ex)
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-print"></a>}}
-\if{latex}{\out{\hypertarget{method-print}{}}}
+\if{html}{\out{<a id="method-Codebook-print"></a>}}
+\if{latex}{\out{\hypertarget{method-Codebook-print}{}}}
 \subsection{Method \code{print()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Codebook$print()}\if{html}{\out{</div>}}

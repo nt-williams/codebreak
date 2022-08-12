@@ -6,8 +6,7 @@
 \alias{codebreak-package}
 \title{codebreak: Label Data Using a YAML Codebook}
 \description{
-A light-weight framework for labeling coded data using a 
-  codebook saved as YAML text file.
+A light-weight framework for labeling coded data using a codebook saved as YAML text file.
 }
 \seealso{
 Useful links:
