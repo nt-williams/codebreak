@@ -9,7 +9,8 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![R-CMD-check](https://github.com/nt-williams/dictionary/workflows/R-CMD-check/badge.svg)](https://github.com/nt-williams/codebreak/actions)
 [![codecov](https://codecov.io/gh/nt-williams/codebreak/branch/main/graph/badge.svg?token=QGGA7OE5UY)](https://codecov.io/gh/nt-williams/codebreak)
-
+[![CRAN
+status](https://www.r-pkg.org/badges/version/codebreak)](https://CRAN.R-project.org/package=codebreak)
 <!-- badges: end -->
 
 Quickly and easily label your data using codebooks saved as a
@@ -72,7 +73,7 @@ Import and apply the codebook to the data:
 ``` r
 cb <- codebreak::Codebook$new(system.file("codebook.yml", package = "codebreak"))
 cb
-#> codebook: /Library/Frameworks/R.framework/Versions/4.1/Resources/library/codebreak/codebook.yml 
+#> codebook: /Users/nicholaswilliams/Library/R/arm64/4.4/library/codebreak/codebook.yml 
 #> 
 #> decode data with `<obj>$decode()`
 #> label data with `<obj>$label()`
@@ -124,12 +125,12 @@ some_data <- tibble::as_tibble(some_data)
 
 cb$decode(some_data, as_labelled = TRUE)
 #> # A tibble: 6 × 4
-#>               x         y     z         w
-#>       <dbl+lbl> <dbl+lbl> <dbl> <dbl+lbl>
-#> 1 1 [These]       0 [No]    5.2   1 [Yes]
-#> 2 2 [Are]         1 [Yes]   3.1   1 [Yes]
-#> 3 5 [Labels]      1 [Yes]   5.6   0 [No] 
-#> 4 3 [Random]      0 [No]    8.9   1 [Yes]
-#> 5 4 [Character]   1 [Yes]   9     1 [Yes]
-#> 6 1 [These]      NA         7.2   1 [Yes]
+#>   x             y             z w        
+#>   <dbl+lbl>     <dbl+lbl> <dbl> <dbl+lbl>
+#> 1 1 [These]      0 [No]     5.2 1 [Yes]  
+#> 2 2 [Are]        1 [Yes]    3.1 1 [Yes]  
+#> 3 5 [Labels]     1 [Yes]    5.6 0 [No]   
+#> 4 3 [Random]     0 [No]     8.9 1 [Yes]  
+#> 5 4 [Character]  1 [Yes]    9   1 [Yes]  
+#> 6 1 [These]     NA          7.2 1 [Yes]
 ```
